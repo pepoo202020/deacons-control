@@ -1,51 +1,94 @@
 'use client'
 
 import LoginFormInfo from "@/ui/components/login/login-form-info";
+
 import EmailInput from "@/ui/components/login/email-input";
-import { useState } from "react";
 import PasswordInput from "@/ui/components/login/password-input";
-import { LOGIN_FORM_SUBMIT_BUTTON_LABEL } from "@/data/constants";
 import StayLoggedIn from "@/ui/components/login/stay-logged-in";
+import { login } from "@/server/actions/login.action";
+import SubmitLoginButton from "./submit-login-button";
+import Alert from "../shared/alert";
+import { useState } from "react";
 import { LoginFormValidation } from "@/app/validations/login-form-validation";
+
 export default function LoginForm() {
-    const [ email, setEmail ] = useState<string>( "" );
-    const [ emailErrorMessage, setEmailErrorMessage ] = useState<string>( "" );
-    const [ password, setPassword ] = useState<string>( "" );
-    const [ passwordErrorMessage, setPasswordErrorMessage ] = useState<string>( "" );
-    const [ stayLoggedIn, setStayLoggedIn ] = useState<boolean>( false );
-    async function handleSubmit( e: React.FormEvent<HTMLFormElement> ) {
-        e.preventDefault();
-        // reset error message
-        setEmailErrorMessage( "" );
-        setPasswordErrorMessage( "" );
+    const [ alertData, setAlertData ] = useState<{
+        show: boolean;
+        message: string;
+        type: "success" | "error";
+        title: string;
+        position: "top-right" | "top-left" | "bottom-right" | "bottom-left" | "top-center" | "bottom-center";
+    } | null>( null );
+    const [ emailError, setEmailError ] = useState<string>( "" );
+    const [ passwordError, setPasswordError ] = useState<string>( "" );
 
+    const handleSubmit = async ( e: React.FormEvent<HTMLFormElement> ) => {
+        e.preventDefault(); // This prevents the page reload
 
-        LoginFormValidation( { email, password, stayLoggedIn, setEmailErrorMessage, setPasswordErrorMessage } );
+        const form = e.currentTarget;
+        const formData = new FormData( form );
+
+        // Get form data
+        const email = formData.get( "email" ) as string;
+        const password = formData.get( "password" ) as string;
+        const stayLoggedIn = Boolean( formData.get( "stayLoggedIn" ) );
+
+        // Clear previous errors
+        setEmailError( "" );
+        setPasswordError( "" );
+        setAlertData( null );
+
+        // Client-side validation
+        const isValid = LoginFormValidation( {
+            email,
+            password,
+            stayLoggedIn,
+            setEmailErrorMessage: setEmailError,
+            setPasswordErrorMessage: setPasswordError
+        } );
+
+        if ( !isValid ) {
+            return; // Stop here if validation fails
+        }
+
+        try {
+            // Proceed with login if validation passes
+            const loginResponse = await login( formData );
+
+            setAlertData( {
+                show: true,
+                message: loginResponse.message,
+                type: loginResponse.success ? "success" : "error",
+                title: loginResponse.title,
+                position: "top-center"
+            } );
+            form.reset();
+        } catch ( error ) {
+            console.error( 'Login error:', error );
+        }
     }
-
-
-
     return (
         <div className="flex flex-col items-center justify-center gap-5">
+            {alertData && (
+                <Alert
+                    message={alertData.message}
+                    type={alertData.type}
+                    show={alertData.show}
+                    position="top-center"
+                    title={alertData.title}
+                />
+            )}
             <LoginFormInfo />
             {/* LOGIN FORM */}
             <form onSubmit={handleSubmit} className="w-full flex flex-col items-start justify-center gap-5">
                 {/* EMAIL INPUT */}
-                <EmailInput value={email} onChange={( value ) => {
-                    setEmail( value )
-                    setEmailErrorMessage( "" )
-                }} errorMessage={emailErrorMessage} />
+                <EmailInput errorMessage={emailError} />
                 {/* PASSWORD INPUT */}
-                <PasswordInput value={password} onChange={( value ) => {
-                    setPassword( value )
-                    setPasswordErrorMessage( "" )
-                }} errorMessage={passwordErrorMessage} />
+                <PasswordInput errorMessage={passwordError} />
                 {/* CHECK IF STAY LOGGED IN */}
-                <StayLoggedIn stayLoggedIn={stayLoggedIn} setStayLoggedIn={setStayLoggedIn} />
+                <StayLoggedIn />
                 {/* SUBMIT BUTTON */}
-                <button type="submit" className="w-full bg-blue-950 text-white px-4 py-2 rounded-md">
-                    {LOGIN_FORM_SUBMIT_BUTTON_LABEL.value.AR}
-                </button>
+                <SubmitLoginButton />
             </form>
         </div>
     );

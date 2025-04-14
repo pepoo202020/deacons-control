@@ -2,9 +2,9 @@ import { loginFormSchema } from "@/lib/formsData/login-form-data";
 
 interface LoginFormValidationIF {
     email: string;
-    setEmailErrorMessage: ( errorMessage: string ) => void;
+    setEmailErrorMessage?: ( errorMessage: string ) => void;
     password: string;
-    setPasswordErrorMessage: ( errorMessage: string ) => void;
+    setPasswordErrorMessage?: ( errorMessage: string ) => void;
     stayLoggedIn: boolean;
 }
 
@@ -18,7 +18,7 @@ const PASSWORD_REQUIRED_ERROR_MESSAGE = {
     EN: "Password is required"
 };
 
-export const LoginFormValidation = ({ email, password, stayLoggedIn, setEmailErrorMessage, setPasswordErrorMessage }: LoginFormValidationIF) => {
+export const LoginFormValidation  = ({ email, password, stayLoggedIn, setEmailErrorMessage, setPasswordErrorMessage }: LoginFormValidationIF) : boolean => {
     const rawFormData = {
         email: email,
         password: password,
@@ -26,32 +26,31 @@ export const LoginFormValidation = ({ email, password, stayLoggedIn, setEmailErr
     }
 
     if (!email) {
-        setEmailErrorMessage( EMAIL_REQUIRED_ERROR_MESSAGE.AR );
+        setEmailErrorMessage?.( EMAIL_REQUIRED_ERROR_MESSAGE.AR );
         if ( !password ) {
-            setPasswordErrorMessage( PASSWORD_REQUIRED_ERROR_MESSAGE.AR );
+            setPasswordErrorMessage?.( PASSWORD_REQUIRED_ERROR_MESSAGE.AR );
         }
-        return;
+        return false;
     }
     if (!password) {
-        setPasswordErrorMessage( PASSWORD_REQUIRED_ERROR_MESSAGE.AR );
-        return;
+        setPasswordErrorMessage?.( PASSWORD_REQUIRED_ERROR_MESSAGE.AR );
+        return false;
     }
 
 
     const validatedData = loginFormSchema.safeParse( rawFormData );
     if ( !validatedData.success ) {
-        console.error( validatedData.error );
         // find the error message
         const emailErrorMessage = validatedData.error.errors.find( issue => issue.path[ 0 ] === "email" );
         const passwordErrorMessage = validatedData.error.errors.find( issue => issue.path[ 0 ] === "password" );
         if ( emailErrorMessage ) {
-            setEmailErrorMessage( emailErrorMessage.message );
+            setEmailErrorMessage?.( emailErrorMessage.message );
         }
         if ( passwordErrorMessage ) {
-            setPasswordErrorMessage( passwordErrorMessage.message );
+            setPasswordErrorMessage?.( passwordErrorMessage.message );
         }
-        return;
+        return false;
     }
 
-    console.log( validatedData.data );
+    return true;
 }

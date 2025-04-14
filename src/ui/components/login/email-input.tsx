@@ -4,10 +4,8 @@ import { MailIcon } from "lucide-react";
 
 interface EmailInputProps {
     errorMessage?: string;
-    value: string;
-    onChange: ( value: string ) => void;
 }
-export default function EmailInput( { errorMessage, value, onChange }: EmailInputProps ) {
+export default function EmailInput( { errorMessage, }: EmailInputProps ) {
     return (
         <div className="w-full flex flex-col items-start">
             <label htmlFor="email" className="
@@ -24,13 +22,16 @@ export default function EmailInput( { errorMessage, value, onChange }: EmailInpu
                 ">
                     <MailIcon className="w-5 h-5" />
                 </div>
-                <input id="email" type="email" placeholder="example@email.com" value={value} onChange={( e ) => onChange( e.target.value )} className={
-                    cn(
-                        "text-sm sm:text-base relative w-full border placeholder-gray-400 focus:border-indigo-400 focus:outline-none rounded-md px-12 py-2",
-                        // error styles
-                        errorMessage && "border-red-500 focus:border-red-500"
-                    )
-                } />
+                <input id="email" type="email" placeholder="example@email.com"
+                    name="email"
+                    required
+                    className={
+                        cn(
+                            "text-sm sm:text-base relative w-full border placeholder-gray-400 focus:border-indigo-400 focus:outline-none rounded-md px-12 py-2",
+                            // error styles
+                            errorMessage && "border-red-500 focus:border-red-500"
+                        )
+                    } />
             </div>
             {/* error message */}
             <p className="text-xs text-red-500 mt-2">

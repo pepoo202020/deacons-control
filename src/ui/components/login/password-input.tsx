@@ -5,10 +5,9 @@ import { EyeIcon, EyeOff, LockIcon } from "lucide-react";
 import { useState } from "react";
 interface PasswordInputProps {
     errorMessage?: string;
-    value: string;
-    onChange: ( value: string ) => void;
+
 }
-export default function PasswordInput( { errorMessage, value, onChange }: PasswordInputProps ) {
+export default function PasswordInput( { errorMessage, }: PasswordInputProps ) {
     const [ showPassword, setShowPassword ] = useState<boolean>( false );
     return (
         <div className="w-full flex flex-col items-start">
@@ -26,7 +25,7 @@ export default function PasswordInput( { errorMessage, value, onChange }: Passwo
                 ">
                     <LockIcon className="w-5 h-5" />
                 </div>
-                <input id="password" type={showPassword ? "text" : "password"} placeholder="********" value={value} onChange={( e ) => onChange( e.target.value )} className={
+                <input id="password" type={showPassword ? "text" : "password"} placeholder="********" name="password" required className={
                     cn(
                         "text-sm sm:text-base relative w-full border placeholder-gray-400 focus:border-indigo-400 focus:outline-none rounded-md px-12 py-2",
                         // error styles
