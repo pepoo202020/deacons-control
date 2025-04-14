@@ -1,3 +1,7 @@
+import { IconType } from "react-icons/lib";
+import { MdDashboard, MdOutlineAdminPanelSettings, MdPerson } from "react-icons/md";
+import { FaUsers } from "react-icons/fa";
+
 interface DataIF {
     name: string
     value: { EN: string, AR: string }
@@ -84,11 +88,44 @@ export const USER_INFO_MENU_ITEMS: DataIF[] = [
     },
 ]
 
+interface NavItem {
+    name: DataIF,
+    icon: IconType,
+    href: string,
+    activeForRoles?: string[],
+    forAllRoles?: boolean,
+}
 
+export const NAV_ITEMS: NavItem[] = [
+    {
+        name: {
+            name: "Dashboard",
+            value: { EN: "Dashboard", AR: "الرئيسية" }
+        },
+        icon: MdDashboard,
+        href: "/dashboard",
+        forAllRoles: true,
+    },
+    {
+        name: {
+            name: "Users",
+            value: { EN: "Users", AR: "المستخدمين" }
+        },
+        icon: FaUsers,
+        href: "/users",
+        activeForRoles: ["admin"],
+    },
+    {
+        name: {
+            name: "Roles",
+            value: { EN: "Roles", AR: "الأدوار" }
+        },
+        icon: MdOutlineAdminPanelSettings,
+        href: "/roles",
+        activeForRoles: ["admin"],
+    }
 
-
-
-
+]
 
 
 
