@@ -2,6 +2,7 @@ import MainRoleTitle from "@/ui/components/dashboard/header/main-role-title";
 import BrandComponent from "@/ui/components/shared/brand_c";
 import RolesChanger from "@/ui/components/dashboard/header/roles-changer";
 import UserInfo from "@/ui/components/dashboard/header/user-info";
+import { cn } from "@/lib/utils";
 
 // Example usage in header-c.tsx:
 
@@ -35,7 +36,10 @@ const [currentRole, setCurrentRole] = useState(mockRoles[0]);
 
 export default function HeaderC() {
     return (
-        <div className="w-full h-16 bg-blue-950 text-white flex items-center justify-between px-4">
+        <header className={cn(
+            "w-full h-16 min-h-[64px] bg-blue-950 text-white flex items-center justify-between px-4",
+            "sticky top-0 z-50",
+        )}>
             {/* Logo */}
             <BrandComponent isSplashScreen={false} size="small" />
             {/* MAIN ROLE TITLE */}
@@ -48,6 +52,6 @@ export default function HeaderC() {
                 <UserInfo />
             </div>
 
-        </div>
+        </header>
     )
 }

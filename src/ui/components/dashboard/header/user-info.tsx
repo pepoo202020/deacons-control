@@ -19,6 +19,8 @@ interface UserInfoProps {
   userData?: UserData;
   onLogout?: () => void;
   className?: string;
+  onSettings?: () => void;
+  onProfile?: () => void;
 }
 
 export default function UserInfo({
@@ -28,7 +30,8 @@ export default function UserInfo({
     email: 'mohammed@example.com',
   },
   onLogout,
-  className
+  className,
+  onSettings, onProfile
 }: UserInfoProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -83,8 +86,8 @@ export default function UserInfo({
         </div>
         {/* User Name & Role */}
         <div className="text-right hidden md:block">
-          <p className="text-[10px] font-medium leading-none">{userData.name}</p>
-          <p className="text-[8px] text-gray-300 mt-1">{userData.email}</p>
+          <p className="text-[15px] font-medium leading-none">{userData.name}</p>
+          <p className="text-[10px] text-gray-300 mt-1">{userData.email}</p>
         </div>
         {/* Dropdown Icon */}
         <ChevronDown
@@ -123,10 +126,10 @@ export default function UserInfo({
               <div >
 
                 {/* Settings */}
-                <button className="menu-items">
+                <div className="menu-items">
                   <Settings className="w-4 h-4" />
                   <span className="text-sm">{USER_INFO_MENU_ITEMS.find(item => item.name === "USER_SETTINGS")?.value.AR}</span>
-                </button>
+                </div>
 
                 {/* Theme Toggle */}
                 <button

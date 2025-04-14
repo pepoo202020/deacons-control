@@ -16,8 +16,9 @@ export default function Nav() {
   );
 
   return (
-    <div className={cn(
-      "w-full bg-blue-950 text-white",
+    <nav className={cn(
+      "w-full h-16 min-h-[64px] bg-blue-950 text-white",
+      "sticky bottom-0 z-50", // Make nav sticky
       "flex items-center justify-center",
       "overflow-x-auto overflow-y-hidden",
       "scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent",
@@ -86,6 +87,6 @@ export default function Nav() {
           );
         })}
       </div>
-    </div>
+    </nav>
   )
 }
