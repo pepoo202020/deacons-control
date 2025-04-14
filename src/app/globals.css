@@ -123,3 +123,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+.model-container-position {
+  @apply absolute top-full left-0 mt-2;
+}
+
+.model-container-bg {
+  @apply bg-blue-950 dark:bg-gray-800;
+}
+
+.menu-items {
+  @apply w-full flex items-center gap-3 p-2 hover:bg-blue-900 cursor-pointer dark:hover:bg-gray-700 transition-colors text-right;
+}

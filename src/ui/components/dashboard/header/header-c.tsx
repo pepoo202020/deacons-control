@@ -1,0 +1,53 @@
+import MainRoleTitle from "@/ui/components/dashboard/header/main-role-title";
+import BrandComponent from "@/ui/components/shared/brand_c";
+import RolesChanger from "@/ui/components/dashboard/header/roles-changer";
+import UserInfo from "@/ui/components/dashboard/header/user-info";
+
+// Example usage in header-c.tsx:
+
+// const mockRoles = [
+//     {
+//         id: '1',
+//         name: { AR: 'مدير المنصة', EN: 'Platform Admin' },
+//         permissions: ['all']
+//     },
+//     {
+//         id: '2',
+//         name: { AR: 'مشرف', EN: 'Supervisor' },
+//         permissions: ['view', 'edit']
+//     },
+//     {
+//         id: '3',
+//         name: { AR: 'مستخدم', EN: 'User' },
+//         permissions: ['view']
+//     }
+// ];
+/*
+// In HeaderC component:
+const [currentRole, setCurrentRole] = useState(mockRoles[0]);
+
+<RolesChanger 
+  currentRole={currentRole}
+  roles={mockRoles}
+  onRoleChange={setCurrentRole}
+/>
+*/
+
+export default function HeaderC() {
+    return (
+        <div className="w-full h-16 bg-blue-950 text-white flex items-center justify-between px-4">
+            {/* Logo */}
+            <BrandComponent isSplashScreen={false} size="small" />
+            {/* MAIN ROLE TITLE */}
+            <MainRoleTitle />
+            {/* LEFT SIDE (ROLES CHANGER + USER INFO) */}
+            <div className="flex items-center gap-4">
+                {/* ROLES CHANGER */}
+                <RolesChanger />
+                {/* USER INFO */}
+                <UserInfo />
+            </div>
+
+        </div>
+    )
+}

@@ -5,13 +5,13 @@ interface BrandComponentProps {
     size?: 'small' | 'medium' | 'large'
 }
 
-export default function BrandComponent( { isSplashScreen, size }: BrandComponentProps ) {
+export default function BrandComponent({ isSplashScreen, size }: BrandComponentProps) {
     return (
         <div className="flex items-center justify-center gap-2">
             {/* Logo COMPONENT */}
             <LogoComponent isSplashScreen={isSplashScreen} size={size} />
             {/* APP NAME COMPONENT */}
-            <AppNameComponent isSplashScreen={isSplashScreen} />
+            <AppNameComponent isSplashScreen={isSplashScreen} size={size} />
         </div>
     )
 }

@@ -10,8 +10,10 @@ import SubmitLoginButton from "./submit-login-button";
 import Alert from "../shared/alert";
 import { useState } from "react";
 import { LoginFormValidation } from "@/app/validations/login-form-validation";
-
+import { useRouter } from "next/navigation";
+import LoaderC from "../shared/loader-c";
 export default function LoginForm() {
+    const router = useRouter();
     const [ alertData, setAlertData ] = useState<{
         show: boolean;
         message: string;
@@ -22,8 +24,16 @@ export default function LoginForm() {
     const [ emailError, setEmailError ] = useState<string>( "" );
     const [ passwordError, setPasswordError ] = useState<string>( "" );
 
+    const [ isLoading, setIsLoading ] = useState( false );
+
+
     const handleSubmit = async ( e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault(); // This prevents the page reload
+
+        if ( isLoading ) return; // Prevent multiple submissions
+
+        setIsLoading( true );
+
 
         const form = e.currentTarget;
         const formData = new FormData( form );
@@ -63,12 +73,25 @@ export default function LoginForm() {
                 position: "top-center"
             } );
             form.reset();
+            // Redirect to dashboard after a short delay
+            setTimeout( () => {
+                router.push( '/dashboard' );
+            }, 2000 );
+
         } catch ( error ) {
             console.error( 'Login error:', error );
+        } finally {
+            setIsLoading( false );
         }
+
     }
+
+    if ( isLoading ) {
+        return <LoaderC inButton={false} size="large" />
+    }
+
     return (
-        <div className="flex flex-col items-center justify-center gap-5">
+        <div className="flex flex-col items-center justify-center gap-5 w-full mx-auto">
             {alertData && (
                 <Alert
                     message={alertData.message}

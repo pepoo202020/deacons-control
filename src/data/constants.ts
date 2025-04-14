@@ -60,6 +60,29 @@ export const LOGIN_FORM_STAY_LOGGED_IN_LABEL: DataIF = {
 }
 
 
+export const ROLES_CHANGER_TITLE: DataIF = {
+    name: "ROLES_CHANGER_TITLE",
+    value: { EN: "Roles Changer", AR: "تغيير الأدوار" }
+}
+
+export const USER_INFO_MENU_ITEMS: DataIF[] = [
+    {
+        name: "USER_SETTINGS",
+        value: { EN: "Settings", AR: "الإعدادات" }
+    },
+    {
+        name: "THEME_SWITCHER_LIGHT",
+        value: { EN: "Light Theme", AR: "الوضع النهاري" }
+    },
+    {
+        name: "THEME_SWITCHER_DARK",
+        value: { EN: "Dark Theme", AR: "الوضع الليلي" }
+    },
+    {
+        name: "USER_LOGOUT",
+        value: { EN: "Logout", AR: "تسجيل الخروج" }
+    },
+]
 
 
 

@@ -1,5 +1,5 @@
 {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
     "[typescriptreact]": {
@@ -17,6 +17,33 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "javascript.suggest.enabled": false,
-    "typescript.suggest.enabled": false
+    "javascript.suggest.enabled": true,
+    "typescript.suggest.enabled": true,
+    "tailwindCSS.emmetCompletions": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.quickSuggestions": {
+        "strings": true,
+        "other": true,
+        "comments": false
+    },
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.showKeywords": true,
+    "editor.suggest.showSnippets": true,
+    "editor.suggest.showClasses": true,
+    "editor.suggest.showFunctions": true,
+    "editor.suggest.showConstants": true,
+    "editor.suggest.showProperties": true,
+    "editor.suggest.showConstructors": true,
+    "editor.suggest.showFields": true,
+    "editor.suggest.showInterfaces": true,
+    "editor.suggest.showModules": true,
+    "editor.suggest.showOperators": true,
+    "editor.suggest.showReferences": true,
+    "editor.suggest.showTypes": true,
+    "editor.suggest.showVariables": true
 }
