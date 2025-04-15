@@ -94,24 +94,24 @@ export default async function RolesPage() {
   return (
     <div className="flex flex-col h-full">
       {/* Fixed Header Section */}
-      <div className="flex-none bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+      <div className="flex-none ">
         <div className="w-full px-4 py-4">
           <BreadcrumpRoles />
         </div>
       </div>
 
       {/* Scrollable Content Section */}
-      <div className="flex-1 bg-gray-50 dark:bg-gray-900 min-h-0">
+      <div className="flex-1  min-h-0">
         <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
           <div className="w-full p-4 lg:p-6">
             {/* Main Content Layout */}
             <div className="flex flex-col lg:flex-row gap-6">
               {/* Roles Grid Section - Takes most space */}
               <div className="flex-1 min-w-0">
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 gap-4 lg:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-6 2xl:grid-cols-8 gap-4 lg:gap-6">
                   <Suspense
                     fallback={
-                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 gap-4 lg:gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-6 2xl:grid-cols-8 gap-4 lg:gap-6">
                         <RoleCardSkeletons count={8} />
                       </div>
                     }
@@ -126,12 +126,13 @@ export default async function RolesPage() {
 
             </div>
 
-            {/* Pagination Section - If needed */}
-            <div className="mt-8 flex justify-center">
-              {/* Pagination component will go here */}
-            </div>
+
           </div>
         </div>
+      </div>
+      {/* Pagination Section - If needed */}
+      <div className="mt-8 flex justify-center">
+        {/* Pagination component will go here */}
       </div>
     </div>
   );

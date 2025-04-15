@@ -6,8 +6,8 @@ interface LogoComponentProps {
     isSplashScreen?: boolean
 }
 
-export default function LogoComponent( { className, size, isSplashScreen }: LogoComponentProps ) {
-    return <div className={cn( "flex items-center justify-center", className )}>
+export default function LogoComponent({ className, size, isSplashScreen }: LogoComponentProps) {
+    return <div className={cn("flex items-center justify-center", className)}>
         {isSplashScreen && (
             <div className="w-20 h-20 relative">
                 <Image src="/darkLogo.png" alt="logo" fill priority sizes="100%" />
@@ -17,7 +17,7 @@ export default function LogoComponent( { className, size, isSplashScreen }: Logo
             cn(
                 size === "small" ? "w-10 h-10" : size === "medium" ? "w-16 h-16" : "w-20 h-20",
                 isSplashScreen ? "hidden" : "block",
-                "dark:bg-[url('/darkLogo.png')] bg-[url('/light.jpg')]",
+                "bg-[url('/darkLogo.png')] ",
                 "bg-no-repeat bg-center bg-contain",
             )
         } />

@@ -39,6 +39,20 @@ export default function UserInfo({ userData, onLogout, onSettings }: UserInfoPro
     }
   };
 
+  // close when click outsite
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      // Handle search click outside
+      if (isOpen &&
+        !(event.target as HTMLElement).closest('.user-menu')) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen])
+
+
 
 
   return (
