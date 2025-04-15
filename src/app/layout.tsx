@@ -22,7 +22,8 @@ export default function RootLayout({
     <>
       <html lang="ar" dir="rtl" suppressHydrationWarning>
         <body
-          className={`${cairo.className} antialiased h-full overflow-hidden`}
+          className={cairo.className}
+          suppressHydrationWarning
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}

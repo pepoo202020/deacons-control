@@ -117,6 +117,7 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    @apply transition-colors duration-200;
   }
 
   html,
@@ -140,6 +141,10 @@
 
 .menu-items {
   @apply w-full flex items-center gap-3 p-2 hover:bg-blue-900 cursor-pointer dark:hover:bg-gray-700 transition-colors text-right;
+}
+
+.breadcrumbs {
+  @apply flex items-center justify-between w-full bg-white dark:bg-blue-950 p-4 rounded-lg
 }
 
 /* Add these styles to your globals.css */

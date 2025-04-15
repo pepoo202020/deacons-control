@@ -8,7 +8,7 @@ const header = {
 
 export default function BreadcrumpRoles() {
   return (
-    <div className="flex items-center justify-between w-full bg-white dark:bg-blue-950 p-4 rounded-lg">
+    <div className="breadcrumbs">
       {/* BREADCRUMBS COMPONENT */}
       <Breadcrumbs />
       {/* HEADER */}

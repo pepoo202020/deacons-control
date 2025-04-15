@@ -1,34 +1,19 @@
+
 import BreadcrumpRoles from "@/ui/pages/roles/breadcrump-roles";
-import RoleCard from "@/ui/pages/roles/role-card";
 import AddNewRoleCard from "@/ui/pages/roles/add-new-role-card";
 import { Role, UserRole } from "@prisma/client";
-import { addNewRole } from "@/server/actions/roles/add-new-role.action";
 import Roles from "@/ui/pages/roles/roles";
 import { Suspense } from "react";
+import AddRoleSection from "@/ui/pages/roles/add-role-section";
+import { getRoles } from "@/server/actions/roles/get-roles.actions";
+import { getUsers } from "@/server/actions/users/get-users.action";
+
 export interface RolesPerUsers extends Role {
   UserRole: UserRole[]
 }
 
 
-const roles: RolesPerUsers[] = [
-  {
-    id: "1",
-    name: "Admin",
-    description: "Admin",
-    UserRole: [
-      {
-        id: "1",
-        userId: "1",
-        roleId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ],
 
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-]
 
 // Loading skeleton component
 function RoleCardSkeleton() {
@@ -44,6 +29,10 @@ function RoleCardSkeleton() {
 }
 
 export default async function RolesPage() {
+  const [roles, users] = await Promise.all([
+    getRoles(),
+    getUsers()
+  ]);
   return (
     <div className="p-5 space-y-5 w-full h-[100vh-30rem] overflow-y-auto">
       {/* BREADCRUMBS COMPONENT */}
@@ -57,10 +46,10 @@ export default async function RolesPage() {
             ))}
           </>
         }>
-          <Roles roles={roles} />
+          <Roles roles={roles} availableUsers={users} />
         </Suspense>
         {/* ADD NEW ROLE COMPONENT */}
-        <AddNewRoleCard action={addNewRole} />
+        <AddRoleSection />
       </div>
       {/* PAGINATION COMPONENT */}
     </div>

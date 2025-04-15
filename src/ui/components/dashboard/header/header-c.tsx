@@ -49,7 +49,12 @@ export default function HeaderC() {
                 {/* ROLES CHANGER */}
                 <RolesChanger />
                 {/* USER INFO */}
-                <UserInfo />
+                <UserInfo userData={
+                    {
+                        name: "John Doe",
+                        email: "john.doe@example.com",
+                    }
+                } />
             </div>
 
         </header>

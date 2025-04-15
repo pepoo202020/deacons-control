@@ -4,6 +4,7 @@ import { Edit2, User, UserPlus } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import { FaUsers } from "react-icons/fa";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { translateRolesName } from "@/app/utils/translate-roles-name";
 
 interface RoleCardProps {
   role: RolesPerUsers;
@@ -12,6 +13,21 @@ interface RoleCardProps {
   onShowProfile?: (role: RolesPerUsers) => void;
   onAssignUsers?: (role: RolesPerUsers) => void;
 }
+
+const buttonsTitle = [
+  {
+    title: { EN: "Show Role Profile", AR: "عرض الصلاحية" },
+  },
+  {
+    title: { EN: "Assign Users", AR: "تعيين المستخدمين" },
+  },
+  {
+    title: { EN: "Edit Role", AR: "تعديل الصلاحية" },
+  },
+  {
+    title: { EN: "Delete Role", AR: "حذف الصلاحية" },
+  }
+]
 
 export default function RoleCard({ role, onEdit, onDelete, onShowProfile, onAssignUsers }: RoleCardProps) {
   return (
@@ -22,7 +38,7 @@ export default function RoleCard({ role, onEdit, onDelete, onShowProfile, onAssi
       </div>
       {/* ROLE NAME */}
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center mb-1">
-        {role.name}
+        {translateRolesName(role.name, "AR")}
       </h3>
       {/* ROLE DESCRIPTION */}
       <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-1 line-clamp-2">
@@ -38,7 +54,7 @@ export default function RoleCard({ role, onEdit, onDelete, onShowProfile, onAssi
         <button
           onClick={() => onShowProfile?.(role)}
           className="p-2 text-purple-600 hover:bg-purple-50 dark:text-purple-400 dark:hover:bg-purple-900/50 rounded-full transition-colors"
-          title="Show Role Profile"
+          title={buttonsTitle[0].title.AR}
         >
           <User className="w-4 h-4" />
         </button>
@@ -46,7 +62,7 @@ export default function RoleCard({ role, onEdit, onDelete, onShowProfile, onAssi
         <button
           onClick={() => onAssignUsers?.(role)}
           className="p-2 text-green-600 hover:bg-green-50 dark:text-green-400 dark:hover:bg-green-900/50 rounded-full transition-colors"
-          title="Assign Users"
+          title={buttonsTitle[1].title.AR}
         >
           <UserPlus className="w-4 h-4" />
         </button>
@@ -54,7 +70,7 @@ export default function RoleCard({ role, onEdit, onDelete, onShowProfile, onAssi
         <button
           onClick={() => onEdit?.(role)}
           className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/50 rounded-full transition-colors"
-          title="Edit Role"
+          title={buttonsTitle[2].title.AR}
         >
           <Edit2 className="w-4 h-4" />
         </button>
@@ -62,7 +78,7 @@ export default function RoleCard({ role, onEdit, onDelete, onShowProfile, onAssi
         <button
           onClick={() => onDelete?.(role)}
           className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/50 rounded-full transition-colors"
-          title="Delete Role"
+          title={buttonsTitle[3].title.AR}
         >
           <Trash2 className="w-4 h-4" />
         </button>
