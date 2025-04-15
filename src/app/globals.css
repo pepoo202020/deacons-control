@@ -123,7 +123,6 @@
   html,
   body {
     height: 100%;
-    overflow: hidden;
   }
 
   body {
@@ -147,15 +146,50 @@
   @apply flex items-center justify-between w-full bg-white dark:bg-blue-950 p-4 rounded-lg
 }
 
+.main-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Sidebar styles - adjust width as needed */
+.sidebar {
+  width: 280px;
+  /* or your sidebar width */
+  flex-shrink: 0;
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 40;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  /* important for flex child */
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 /* Add these styles to your globals.css */
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
   }
 
-  .scrollbar-thumb-white\/20::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+  .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+    background-color: rgb(209 213 219);
     border-radius: 9999px;
+  }
+
+  .dark .scrollbar-thumb-gray-600::-webkit-scrollbar-thumb {
+    background-color: rgb(75 85 99);
   }
 
   .scrollbar-track-transparent::-webkit-scrollbar-track {
@@ -166,4 +200,20 @@
     width: 6px;
     height: 6px;
   }
+}
+
+/* Ensure the root layout supports fixed height content */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+/* Add smooth scrolling to all elements */
+* {
+  scroll-behavior: smooth;
 }

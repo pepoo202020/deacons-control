@@ -20,16 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <html lang="ar" dir="rtl" suppressHydrationWarning>
-        <body
-          className={cairo.className}
-          suppressHydrationWarning
-        >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <html lang="ar" dir="rtl" suppressHydrationWarning>
+          <body
+            className={cairo.className}
+            suppressHydrationWarning
+          >
+
             {children}
-          </ThemeProvider>
-        </body>
-      </html>
+
+          </body>
+        </html>
+      </ThemeProvider>
     </>
   );
 }

@@ -31,11 +31,12 @@ export default function AddNewRoleCard({
       onClick={action}
       disabled={disabled}
       className={`
-        w-full max-w-[250px] 
-        bg-white dark:bg-blue-950 
-        flex flex-col items-center justify-center 
-        rounded-lg p-6 
-        transition-all duration-200
+        bg-white dark:bg-blue-950 w-full h-full rounded-lg 
+                    hover:shadow-lg transition-all duration-200 relative
+                    flex flex-col p-4 sm:p-6
+        
+         items-center justify-center 
+        
         ${disabled
           ? 'opacity-50 cursor-not-allowed'
           : 'hover:shadow-lg hover:scale-105 hover:border-blue-200 cursor-pointer'
