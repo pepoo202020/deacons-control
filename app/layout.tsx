@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/next-theme.provider";
 
 const cairo = Cairo({
   subsets: ["latin"],
@@ -19,12 +20,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <>
+      <html lang="ar" dir="rtl" suppressContentEditableWarning>
       <body
         className={`${cairo.className} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
+    </>
   );
 }
