@@ -1,8 +1,24 @@
+'use client'
 import Brand from "@/components/brand";
 import { MAIN_PAGE_DATA } from "@/constants/main-page.data";
+import { checkSession } from "@/utils/check-session";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
   const lang = 'AR';
+  const router = useRouter()
+  useEffect(() => {
+    const user = async () => {
+      const userSession = await checkSession()
+      if(userSession) {
+        router.push('/dashboard')
+      } else {
+        router.push('/login')
+      }
+    }
+    user()
+  },[router])
   return (
     <main className="main-page p-2">
       <div className="flex-1 flex flex-col items-center justify-center">
