@@ -17,8 +17,8 @@ export default function Brand(
         {/* application name */}
         <div className={
             cn(
-                size === 'SM'? 'text-xl' : size === 'MD'? 'text-2xl' : 'text-5xl',
-                'flex flex-col items-start justify-center gap-2',
+                size === 'SM'? 'text-sm' : size === 'MD'? 'text-2xl' : 'text-5xl',
+                'flex flex-col items-start justify-center ',
                 'font-bold',
                 splashScreen ? 'text-white' : 'text-blue-950 dark:text-white',
                 
