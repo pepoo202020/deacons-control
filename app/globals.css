@@ -114,9 +114,15 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 overflow-hidden;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-hidden h-screen w-screen;
   }
+}
+
+.main-page {
+  @apply h-screen w-screen overflow-hidden;
+  @apply bg-blue-950 text-white;
+  @apply flex flex-col items-center justify-center;
 }
