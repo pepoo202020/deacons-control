@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/next-theme.provider";
+import { Toaster } from "sonner";
+import ClientToaster from "@/components/ClientToaster";
 
 const cairo = Cairo({
   subsets: ["latin"],
@@ -32,8 +34,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ClientToaster />
         </ThemeProvider>
       </body>
+      
     </html>
     </>
   );
