@@ -1,4 +1,5 @@
 'use client'
+import { showCustomToast } from '@/components/custom-toast'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -23,7 +24,13 @@ export default function NewRoleForm({lang = 'AR', onDialogChange}:{lang?: 'AR' |
     })
     function onSubmit(data: z.infer<typeof newRoleFormSchema>) {
         console.log(data)
-        toast.success('Role created successfully')
+        showCustomToast({
+            avatar: "/icons/role-playing-game.png",
+            name: lang === "AR" ? "نظام الشمامسة" : "Deacons System",
+            message: lang === "AR" ? `تم إنشاء الدور: ${data.roleName}` : `Role created: ${data.roleName}`,
+            lang,
+            type: 'loading',
+          })
         
     }
 

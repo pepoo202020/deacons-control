@@ -175,3 +175,32 @@
   @apply dark:bg-blue-950 dark:text-white dark:hover:bg-gray-800;
 }
 
+.animate-enter {
+  animation: toast-enter 0.3s ease-out;
+}
+
+.animate-leave {
+  animation: toast-leave 0.3s ease-in;
+}
+
+@keyframes toast-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-leave {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
