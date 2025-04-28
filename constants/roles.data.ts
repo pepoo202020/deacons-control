@@ -11,3 +11,8 @@ export const ROLES_ACTIONS_CONTENT = [
         title: {EN: "Delete All Roles", AR: "حذف جميع الأدوار"},
     }
 ]
+
+export const NEW_ROLE_BUTTON = {
+    EN: "New Role",
+    AR: "إضافة دور جديد",
+}

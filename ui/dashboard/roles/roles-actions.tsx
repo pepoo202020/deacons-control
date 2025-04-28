@@ -1,6 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { ROLES_ACTIONS_CONTENT } from '@/constants/roles.data'
-import React from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 
 export default function RolesActions({lang = 'AR'} : {lang?: 'AR' | 'EN'}) {
