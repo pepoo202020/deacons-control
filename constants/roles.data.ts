@@ -79,6 +79,11 @@ export const ROLE_EDIT_DIALOG_DATA = {
 
 export const ASSIGN_USERS_ROLE_DIALOG = {
   title: { EN: "Assign Users", AR: "تعيين مستخدمين" },
+  noUsers: { EN: "No users found", AR: "لا يوجد مستخدمين" },
+  buttons: {
+    save: { EN: "Save", AR: "حفظ" },
+    cancel: { EN: "Cancel", AR: "إلغاء" },
+  },
 };
 
 export const DELETE_ROLE_DIALOG = {

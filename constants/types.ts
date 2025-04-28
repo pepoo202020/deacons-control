@@ -15,3 +15,11 @@ export interface UserRoleWithUser extends UserRole {
 export interface RoleWithUserRole extends Role {
   UserRole: UserRoleWithUser[];
 }
+
+export interface UserRoleWithRole extends UserRole {
+  role: Role;
+}
+
+export interface UserWithUserRole extends User {
+  userRoles: UserRoleWithRole[];
+}
