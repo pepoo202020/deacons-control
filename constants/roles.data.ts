@@ -75,6 +75,38 @@ export const ROLE_PROFILE_DIALOG_DATA = {
 
 export const ROLE_EDIT_DIALOG_DATA = {
   title: { EN: "Edit Role", AR: "تعديل الدور" },
+  formFields: {
+    name: { EN: "Role Name", AR: "إسم الدور" },
+    description: { EN: "Role Description", AR: "وصف الدور" },
+  },
+  formFieldsPlaceholders: {
+    name: { EN: "Enter Role Name", AR: "أدخل إسم الدور" },
+    description: { EN: "Enter Role Description", AR: "أدخل وصف الدور" },
+  },
+  submitButton: { EN: "Update the role", AR: "تحديث الدور" },
+  cancelButton: { EN: "Cancel", AR: "إلغاء" },
+  responses: {
+    success: {
+      title: { EN: "Success", AR: "نجاح" },
+      description: {
+        EN: "Role updates successfully",
+        AR: "تم تحديث الدور بنجاح",
+      },
+    },
+    errors: {
+      notExistingRole: {
+        title: { EN: "Error", AR: "خطأ" },
+        description: { EN: "Role does not exist", AR: "الدور غير موجود" },
+      },
+      unknown: {
+        title: { EN: "Error", AR: "خطأ" },
+        description: {
+          EN: "Unknown error in updating new role",
+          AR: "خطأ غير معروف في تحديث الدور",
+        },
+      },
+    },
+  },
 };
 
 export const ASSIGN_USERS_ROLE_DIALOG = {

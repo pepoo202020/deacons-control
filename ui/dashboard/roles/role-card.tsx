@@ -99,22 +99,22 @@ const CardContent = ({
       {/* Card Content Container */}
       <div className="flex md:flex-col items-center flex-grow gap-5 md:gap-0">
         {/* ROLE ICON */}
-        <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-full md:mb-1 transform group-hover:scale-110 transition-transform duration-200">
+        <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-full md:mb-1 transform group-hover:scale-110 transition-transform duration-200 ">
           <MdOutlineAdminPanelSettings className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />
         </div>
 
         {/* ROLE NAME */}
-        <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white text-center md:mb-2 line-clamp-2">
+        <h3 className="text-base sm:text-lg min-w-[10%] font-semibold text-gray-900 dark:text-white text-center md:mb-2 line-clamp-2">
           {role.name}
         </h3>
 
         {/* ROLE DESCRIPTION */}
-        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center md:mb-3 line-clamp-2 flex-grow">
+        <p className="text-xs sm:text-sm text-gray-500  dark:text-gray-400 text-center md:mb-3 line-clamp-2 flex-grow w-[180px]">
           {role.description}
         </p>
 
         {/* ROLE NUMBER OF USERS */}
-        <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 md:mb-4 bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5 rounded-full">
+        <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 md:mb-4 bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5 rounded-full text-center">
           <FaUsers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span dir="rtl">{role.UserRole.length} مستخدم</span>
         </div>

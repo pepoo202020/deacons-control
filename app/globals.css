@@ -127,7 +127,7 @@
   @apply flex flex-col items-center justify-center;
 }
 .loading {
-  @apply fixed z-50;
+  @apply fixed inset-0 z-50;
   @apply h-screen w-screen overflow-hidden;
   @apply bg-blue-950 text-white;
   @apply flex flex-col items-center justify-center;
