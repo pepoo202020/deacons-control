@@ -122,8 +122,19 @@ export default function NewRoleForm({
             )}
           />
           <div className="w-full flex flex-col md:flex-row items-center md:justify-end gap-2 mt-5">
-            <Button className="global-submit-btn" type="submit">
-              {NEW_ROLE_DIALOG_CONTENT.submitButton[lang]}
+            <Button
+              className="global-submit-btn"
+              type="submit"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
+                  {lang === "AR" ? "جارٍ الإرسال..." : "Submitting..."}
+                </>
+              ) : (
+                NEW_ROLE_DIALOG_CONTENT.submitButton[lang]
+              )}
             </Button>
             <Button
               onClick={onCancel}

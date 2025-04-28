@@ -57,3 +57,12 @@ export const NEW_ROLE_SERVER_RESPONSE_DATA = {
     },
   },
 };
+
+export const ROLE_CARD_DATA = {
+  actions: {
+    profile: { EN: "Show Role Profile", AR: "عرض الصلاحية" },
+    assignUsers: { EN: "Assign Users", AR: "تعيين المستخدمين" },
+    edit: { EN: "Edit Role", AR: "تعديل الصلاحية" },
+    delete: { EN: "Delete Role", AR: "حذف الصلاحية" },
+  },
+};
