@@ -126,6 +126,12 @@
   @apply bg-blue-950 text-white;
   @apply flex flex-col items-center justify-center;
 }
+.loading {
+  @apply fixed z-50;
+  @apply h-screen w-screen overflow-hidden;
+  @apply bg-blue-950 text-white;
+  @apply flex flex-col items-center justify-center;
+}
 
 @layer utilities {
   .scrollbar-thin {
@@ -163,7 +169,7 @@
   @apply mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-gray-200;
 }
 
-.global-submit-btn{
+.global-submit-btn {
   @apply flex  w-full md:w-fit p-5 items-center justify-center rounded-xl bg-blue-950 text-sm font-semibold text-white outline-none cursor-pointer;
   @apply hover:bg-blue-800;
   @apply dark:bg-white dark:text-blue-950 dark:hover:bg-gray-200;
@@ -173,6 +179,23 @@
   @apply flex w-full md:w-fit p-5 items-center justify-center rounded-xl bg-white text-sm font-semibold text-blue-950 outline-none cursor-pointer;
   @apply hover:bg-gray-200;
   @apply dark:bg-blue-950 dark:text-white dark:hover:bg-gray-800;
+}
+
+.global-edit-btn {
+  @apply flex  w-full md:w-fit p-5 items-center justify-center rounded-xl bg-amber-800 text-sm font-semibold text-white outline-none cursor-pointer;
+  @apply hover:bg-amber-700;
+  @apply dark:bg-amber-500 dark:text-white dark:hover:bg-gray-200;
+}
+.global-assign-btn {
+  @apply flex  w-full md:w-fit p-5 items-center justify-center rounded-xl bg-indigo-900 text-sm font-semibold text-white outline-none cursor-pointer;
+  @apply hover:bg-indigo-800;
+  @apply dark:bg-white dark:text-indigo-950 dark:hover:bg-gray-200;
+}
+
+.global-delete-btn {
+  @apply flex  w-full md:w-fit p-5 items-center justify-center rounded-xl bg-red-900 text-sm font-semibold text-white outline-none cursor-pointer;
+  @apply hover:bg-red-800;
+  @apply dark:bg-white dark:text-red-950 dark:hover:bg-gray-200;
 }
 
 .animate-enter {

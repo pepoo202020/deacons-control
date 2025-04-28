@@ -60,9 +60,27 @@ export const NEW_ROLE_SERVER_RESPONSE_DATA = {
 
 export const ROLE_CARD_DATA = {
   actions: {
-    profile: { EN: "Show Role Profile", AR: "عرض الصلاحية" },
+    profile: { EN: "Show Role Profile", AR: "عرض الدور" },
     assignUsers: { EN: "Assign Users", AR: "تعيين المستخدمين" },
-    edit: { EN: "Edit Role", AR: "تعديل الصلاحية" },
-    delete: { EN: "Delete Role", AR: "حذف الصلاحية" },
+    edit: { EN: "Edit Role", AR: "تعديل الدور" },
+    delete: { EN: "Delete Role", AR: "حذف الدور" },
   },
+};
+
+export const ROLE_PROFILE_DIALOG_DATA = {
+  assignedUsers: { EN: "Assigned Users", AR: "المستخدمين المعينين" },
+  noUsers: { EN: "No users assigned", AR: "لا يوجد مستخدمين معينين" },
+  close: { EN: "Close", AR: "إغلاق" },
+};
+
+export const ROLE_EDIT_DIALOG_DATA = {
+  title: { EN: "Edit Role", AR: "تعديل الدور" },
+};
+
+export const ASSIGN_USERS_ROLE_DIALOG = {
+  title: { EN: "Assign Users", AR: "تعيين مستخدمين" },
+};
+
+export const DELETE_ROLE_DIALOG = {
+  title: { EN: "Delete Role", AR: "حذف الدور" },
 };
