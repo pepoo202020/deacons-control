@@ -1,5 +1,6 @@
 import Loader from "@/components/Loader";
 import UsersBreadcrumb from "@/ui/dashboard/users/breadcrumb-users";
+import NewUserBtn from "@/ui/dashboard/users/new-user-btn";
 import { Suspense } from "react";
 
 export default async function UsersPage() {
@@ -19,6 +20,7 @@ export default async function UsersPage() {
       </div>
       {/* Pagination */}
       {/* new button action */}
+      <NewUserBtn />
     </div>
   );
 }
